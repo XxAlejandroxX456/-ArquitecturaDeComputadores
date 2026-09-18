@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Farmacia Vida Sana</title>
+<meta name="description" content="Farmacia Vida Sana: medicamentos, productos de cuidado personal y atención farmacéutica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-oscuro: #0d4a40;
+    --verde: #17836b;
+    --menta: #e4f3ed;
+    --blanco: #ffffff;
+    --tinta: #16241f;
+    --gris: #56645f;
+    --linea: #cfe0d9;
+    --coral: #e2573a;
+    --titulos: "Bricolage Grotesque", "Trebuchet MS", Arial, sans-serif;
+    --texto: "Figtree", "Segoe UI", Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body {
+    font-family: var(--texto);
+    color: var(--tinta);
+    background: var(--blanco);
+    line-height: 1.6;
+    font-size: 1.05rem;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+
+  .contenedor { width: min(1080px, 100% - 2.5rem); margin-inline: auto; }
+
+  /* Encabezado */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--blanco);
+    border-bottom: 1px solid var(--linea);
+  }
+  .barra {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap; padding: .8rem 0;
+  }
+  .marca {
+    display: flex; align-items: center; gap: .6rem;
+    text-decoration: none; font-family: var(--titulos);
+    font-weight: 800; font-size: 1.25rem; color: var(--verde-oscuro);
+  }
+  .marca svg { width: 34px; height: 34px; }
+  nav ul { list-style: none; display: flex; gap: .3rem; flex-wrap: wrap; }
+  nav a {
+    display: block; padding: .4rem .8rem; border-radius: 6px;
+    text-decoration: none; font-weight: 500; color: var(--gris);
+  }
+  nav a:hover { background: var(--menta); color: var(--verde-oscuro); }
+
+  /* Inicio */
+  .inicio { background: var(--verde-oscuro); color: var(--blanco); padding: clamp(3rem, 8vw, 6rem) 0; }
+  .inicio .contenedor {
+    display: grid; gap: 2.5rem; align-items: center;
+    grid-template-columns: 1.4fr 1fr;
+  }
+  .inicio h1 {
+    font-family: var(--titulos); font-weight: 800;
+    font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1.05;
+    letter-spacing: -0.02em; margin-bottom: 1rem;
+  }
+  .inicio p { max-width: 34rem; color: #cfe7df; font-size: 1.15rem; margin-bottom: 1.8rem; }
+  .boton {
+    display: inline-block; padding: .8rem 1.5rem; border-radius: 8px;
+    background: var(--blanco); color: var(--verde-oscuro);
+    font-weight: 600; text-decoration: none; margin-right: .6rem; margin-bottom: .6rem;
+  }
+  .boton:hover { background: var(--menta); }
+  .boton.secundario { background: transparent; color: var(--blanco); border: 2px solid #7fb8a8; }
+  .boton.secundario:hover { background: rgba(255,255,255,.1); }
+
+  .horario-caja {
+    background: var(--blanco); color: var(--tinta);
+    border-radius: 14px; padding: 1.6rem;
+  }
+  .estado { display: flex; align-items: center; gap: .6rem; font-weight: 600; font-size: 1.1rem; margin-bottom: 1rem; }
+  .punto { width: 12px; height: 12px; border-radius: 50%; background: var(--gris); }
+  .estado.abierto .punto { background: #1a9c62; }
+  .estado.cerrado .punto { background: var(--coral); }
+  .horario-caja dl { display: grid; grid-template-columns: auto 1fr; gap: .35rem 1rem; font-size: .98rem; }
+  .horario-caja dt { color: var(--gris); }
+  .horario-caja dd { text-align: right; font-weight: 500; }
+
+  /* Secciones */
+  section { padding: clamp(3rem, 7vw, 5rem) 0; }
+  section.alterna { background: var(--menta); }
+  h2 {
+    font-family: var(--titulos); font-weight: 700;
+    font-size: clamp(1.9rem, 4vw, 2.6rem); line-height: 1.1;
+    color: var(--verde-oscuro); margin-bottom: 1.5rem; letter-spacing: -0.01em;
+  }
+
+  /* Nosotros */
+  .nosotros-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3rem; align-items: start; }
+  .nosotros-grid p { margin-bottom: 1rem; max-width: 38rem; }
+  .valores { list-style: none; border-left: 4px solid var(--verde); padding-left: 1.4rem; }
+  .valores li { margin-bottom: 1.2rem; }
+  .valores strong { display: block; font-family: var(--titulos); font-size: 1.15rem; color: var(--verde-oscuro); }
+  .valores span { color: var(--gris); font-size: .98rem; }
+
+  /* Servicios */
+  .servicios { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 3rem; }
+  .servicio { padding: 1.3rem 0; border-top: 1px solid var(--linea); display: flex; gap: 1rem; }
+  .servicio svg { flex: none; width: 34px; height: 34px; color: var(--verde); margin-top: .2rem; }
+  .servicio h3 { font-family: var(--titulos); font-size: 1.2rem; color: var(--verde-oscuro); margin-bottom: .2rem; }
+  .servicio p { color: var(--gris); font-size: .98rem; }
+
+  /* Tipo empresarial */
+  .ficha { background: var(--blanco); border: 1px solid var(--linea); border-radius: 12px; overflow: hidden; max-width: 760px; }
+  .ficha div { display: grid; grid-template-columns: 220px 1fr; padding: .9rem 1.4rem; border-top: 1px solid var(--linea); }
+  .ficha div:first-child { border-top: none; }
+  .ficha dt { color: var(--gris); font-weight: 500; }
+  .ficha dd { font-weight: 500; }
+  .nota { margin-top: 1rem; color: var(--gris); font-size: .92rem; max-width: 760px; }
+
+  /* Contacto */
+  .contacto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .contacto-lista { list-style: none; }
+  .contacto-lista li { padding: 1rem 0; border-top: 1px solid var(--linea); }
+  .contacto-lista li:first-child { border-top: none; padding-top: 0; }
+  .contacto-lista small { display: block; color: var(--gris); font-size: .9rem; }
+  .contacto-lista a { font-weight: 600; text-decoration: none; color: var(--verde-oscuro); }
+  .contacto-lista a:hover { text-decoration: underline; }
+  .mapa-caja {
+    background: var(--menta); border: 1px solid var(--linea); border-radius: 12px;
+    padding: 1.6rem; display: flex; flex-direction: column; justify-content: center; gap: 1rem;
+  }
+  .mapa-caja h3 { font-family: var(--titulos); color: var(--verde-oscuro); font-size: 1.3rem; }
+  .mapa-caja .boton { background: var(--verde-oscuro); color: var(--blanco); align-self: flex-start; margin: 0; }
+  .mapa-caja .boton:hover { background: var(--verde); }
+
+  footer { background: var(--verde-oscuro); color: #cfe7df; padding: 1.6rem 0; font-size: .92rem; }
+  footer .contenedor { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+
+  @media (max-width: 800px) {
+    .inicio .contenedor, .nosotros-grid, .contacto-grid, .servicios { grid-template-columns: 1fr; }
+    .ficha div { grid-template-columns: 1fr; gap: .1rem; }
+    .barra { justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="contenedor barra">
+    <a class="marca" href="#inicio" aria-label="Farmacia Vida Sana, ir al inicio">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <rect width="40" height="40" rx="9" fill="#17836b"/>
+        <path d="M16 8h8v8h8v8h-8v8h-8v-8H8v-8h8z" fill="#fff"/>
+      </svg>
+      Farmacia Vida Sana
+    </a>
+    <nav aria-label="Principal">
+      <ul>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#empresa">Tipo empresarial</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="inicio" id="inicio">
+    <div class="contenedor">
+      <div>
+        <h1>Tu salud, con atención cercana.</h1>
+        <p>Medicamentos, productos de cuidado personal y orientación farmacéutica en un solo lugar.</p>
+        <a class="boton" href="#servicios">Ver servicios</a>
+        <a class="boton secundario" href="#contacto">Contactar</a>
+      </div>
+      <div class="horario-caja">
+        <div class="estado" id="estado"><span class="punto"></span><span id="estado-texto">Consultando horario…</span></div>
+        <dl>
+          <dt>Lunes a viernes</dt><dd>8:00 a. m. – 8:00 p. m.</dd>
+          <dt>Sábados</dt><dd>8:00 a. m. – 6:00 p. m.</dd>
+          <dt>Domingos y festivos</dt><dd>9:00 a. m. – 1:00 p. m.</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <section id="nosotros">
+    <div class="contenedor nosotros-grid">
+      <div>
+        <h2>Nosotros</h2>
+        <p>Somos una farmacia de barrio con atención profesional. Ayudamos a cada persona a encontrar el medicamento que necesita y a usarlo de forma correcta.</p>
+        <p>Nuestro equipo de regentes y auxiliares de farmacia te explica la dosis, las precauciones y las alternativas disponibles. Si tu consulta requiere un médico, te lo decimos con claridad.</p>
+      </div>
+      <ul class="valores">
+        <li><strong>Misión</strong><span>Facilitar el acceso a medicamentos y a información confiable sobre tu salud.</span></li>
+        <li><strong>Visión</strong><span>Ser la farmacia de confianza de las familias de nuestra comunidad.</span></li>
+        <li><strong>Valores</strong><span>Honestidad, respeto, responsabilidad y trato humano.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="servicios" class="alterna">
+    <div class="contenedor">
+      <h2>Servicios</h2>
+      <div class="servicios">
+        <div class="servicio">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="9" width="18" height="6" rx="3" transform="rotate(-35 12 12)"/><path d="M9.5 8.5l6 6" transform="rotate(-35 12 12)"/></svg>
+          <div><h3>Venta de medicamentos</h3><p>Medicamentos con y sin fórmula médica, genéricos y de marca.</p></div>
+        </div>
+        <div class="servicio">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg>
+          <div><h3>Orientación farmacéutica</h3><p>Te explicamos cómo tomar tu tratamiento y qué precauciones tener.</p></div>
+        </div>
+        <div class="servicio">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg>
+          <div><h3>Toma de presión y glucosa</h3><p>Controles rápidos y sin costo excesivo, con registro para tu seguimiento.</p></div>
+        </div>
+        <div class="servicio">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l9-9M14 4l6 6-3 3-6-6zM6 18l-2 2"/></svg>
+          <div><h3>Inyectología</h3><p>Aplicación de inyectables con fórmula médica, por personal capacitado.</p></div>
+        </div>
+        <div class="servicio">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.500-7 10-7 10z"/></svg>
+          <div><h3>Cuidado personal y bienestar</h3><p>Higiene, dermocosmética, vitaminas, suplementos y productos para bebé.</p></div>
+        </div>
+        <div class="servicio">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg>
+          <div><h3>Domicilios</h3><p>Llevamos tu pedido a casa. Pídelo por teléfono o WhatsApp.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="empresa">
+    <div class="contenedor">
+      <h2>Tipo empresarial</h2>
+      <dl class="ficha">
+        <div><dt>Razón social</dt><dd>Farmacia Vida Sana S.A.S.</dd></div>
+        <div><dt>Tipo de sociedad</dt><dd>Sociedad por Acciones Simplificada (S.A.S.)</dd></div>
+        <div><dt>Identificación tributaria (NIT)</dt><dd>000.000.000-0</dd></div>
+        <div><dt>Actividad económica</dt><dd>Comercio al por menor de productos farmacéuticos y de cuidado personal</dd></div>
+        <div><dt>Tamaño de empresa</dt><dd>Microempresa</dd></div>
+        <div><dt>Representante legal</dt><dd>Nombre del representante</dd></div>
+        <div><dt>Año de fundación</dt><dd>2020</dd></div>
+      </dl>
+      <p class="nota">Datos de ejemplo: reemplázalos por la información real de tu establecimiento.</p>
+    </div>
+  </section>
+
+  <section id="contacto" class="alterna">
+    <div class="contenedor">
+      <h2>Contacto</h2>
+      <div class="contacto-grid">
+        <ul class="contacto-lista">
+          <li><small>Dirección</small>Calle 10 # 5-20, Centro</li>
+          <li><small>Teléfono</small><a href="tel:+570000000000">(+57) 000 000 0000</a></li>
+          <li><small>WhatsApp</small><a href="https://wa.me/570000000000" target="_blank" rel="noopener">Escríbenos por WhatsApp</a></li>
+          <li><small>Correo electrónico</small><a href="mailto:contacto@farmaciavidasana.com">contacto@farmaciavidasana.com</a></li>
+        </ul>
+        <div class="mapa-caja">
+          <h3>¿Necesitas un medicamento hoy?</h3>
+          <p>Escríbenos con el nombre del producto y te confirmamos si lo tenemos disponible y a qué hora puedes recogerlo o recibirlo.</p>
+          <a class="boton" href="https://wa.me/570000000000" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="contenedor">
+    <span>© <span id="anio">2026</span> Farmacia Vida Sana. Todos los derechos reservados.</span>
+    <span>Ante síntomas graves, acude a un médico.</span>
+  </div>
+</footer>
+
+<script>
+  // Año actual en el pie de página
+  document.getElementById("anio").textContent = new Date().getFullYear();
+
+  // Estado "Abierto / Cerrado" según el horario
+  (function () {
+    var ahora = new Date();
+    var dia = ahora.getDay(); // 0 = domingo
+    var minutos = ahora.getHours() * 60 + ahora.getMinutes();
+    var abre, cierra;
+    if (dia === 0) { abre = 9 * 60; cierra = 13 * 60; }
+    else if (dia === 6) { abre = 8 * 60; cierra = 18 * 60; }
+    else { abre = 8 * 60; cierra = 20 * 60; }
+    var abierto = minutos >= abre && minutos < cierra;
+    var caja = document.getElementById("estado");
+    caja.classList.add(abierto ? "abierto" : "cerrado");
+    document.getElementById("estado-texto").textContent = abierto ? "Abierto ahora" : "Cerrado ahora";
+  })();
+</script>
+</body>
+</html>
