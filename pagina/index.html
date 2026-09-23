@@ -116,6 +116,81 @@
   .servicio h3 { font-family: var(--titulos); font-size: 1.2rem; color: var(--verde-oscuro); margin-bottom: .2rem; }
   .servicio p { color: var(--gris); font-size: .98rem; }
 
+
+  /* Contenido y experiencia digital */
+  .contenido-intro { max-width: 720px; margin-bottom: 2rem; }
+  .contenido-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+  .contenido-card {
+    background: var(--blanco);
+    border: 1px solid var(--linea);
+    border-radius: 14px;
+    padding: 1.5rem;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .contenido-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(13,74,64,.10);
+  }
+  .contenido-card h3 {
+    font-family: var(--titulos);
+    color: var(--verde-oscuro);
+    margin-bottom: .6rem;
+  }
+  .contenido-card p { color: var(--gris); font-size: .98rem; }
+  .buscador {
+    margin-top: 2rem;
+    background: var(--verde-oscuro);
+    color: var(--blanco);
+    border-radius: 14px;
+    padding: 1.5rem;
+  }
+  .buscador h3 { font-family: var(--titulos); margin-bottom: .5rem; }
+  .buscador p { color: #cfe7df; margin-bottom: 1rem; }
+  .buscador-form {
+    display: flex;
+    gap: .7rem;
+    flex-wrap: wrap;
+  }
+  .buscador-form input {
+    flex: 1 1 260px;
+    min-height: 46px;
+    border: none;
+    border-radius: 8px;
+    padding: .7rem 1rem;
+    font: inherit;
+  }
+  .buscador-form button {
+    min-height: 46px;
+    border: none;
+    border-radius: 8px;
+    padding: .7rem 1.2rem;
+    background: var(--blanco);
+    color: var(--verde-oscuro);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .resultado-busqueda {
+    margin-top: 1rem;
+    padding: .8rem 1rem;
+    border-radius: 8px;
+    background: rgba(255,255,255,.10);
+    color: #e4f3ed;
+    min-height: 24px;
+  }
+  .alerta {
+    margin-top: 1.5rem;
+    padding: 1rem 1.2rem;
+    border-left: 4px solid var(--coral);
+    background: #fff6f3;
+    border-radius: 6px;
+    color: var(--tinta);
+  }
+
   /* Tipo empresarial */
   .ficha { background: var(--blanco); border: 1px solid var(--linea); border-radius: 12px; overflow: hidden; max-width: 760px; }
   .ficha div { display: grid; grid-template-columns: 220px 1fr; padding: .9rem 1.4rem; border-top: 1px solid var(--linea); }
@@ -144,7 +219,7 @@
   footer .contenedor { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 
   @media (max-width: 800px) {
-    .inicio .contenedor, .nosotros-grid, .contacto-grid, .servicios { grid-template-columns: 1fr; }
+    .inicio .contenedor, .nosotros-grid, .contacto-grid, .servicios, .contenido-grid { grid-template-columns: 1fr; }
     .ficha div { grid-template-columns: 1fr; gap: .1rem; }
     .barra { justify-content: center; }
   }
@@ -166,6 +241,7 @@
       <ul>
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#contenido">Contenido</a></li>
         <li><a href="#empresa">Tipo empresarial</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
@@ -240,6 +316,51 @@
     </div>
   </section>
 
+
+  <section id="contenido" class="alterna">
+    <div class="contenedor">
+      <div class="contenido-intro">
+        <h2>Contenido de la farmacia</h2>
+        <p>
+          Conoce mejor lo que ofrece Farmacia Vida Sana y encuentra información útil
+          antes de realizar tu compra. Esta sección reúne servicios, orientación
+          básica y una herramienta rápida para consultar productos.
+        </p>
+      </div>
+
+      <div class="contenido-grid">
+        <article class="contenido-card">
+          <h3>Catálogo y disponibilidad</h3>
+          <p>Consulta medicamentos, productos de cuidado personal, higiene, dermocosmética y artículos para bebé. La disponibilidad puede confirmarse directamente con la farmacia.</p>
+        </article>
+
+        <article class="contenido-card">
+          <h3>Consejos de uso responsable</h3>
+          <p>Lee siempre las indicaciones del medicamento, respeta la dosis indicada y consulta al personal farmacéutico cuando tengas dudas sobre su uso o conservación.</p>
+        </article>
+
+        <article class="contenido-card">
+          <h3>Atención personalizada</h3>
+          <p>Recibe orientación sobre los productos disponibles y conoce cuándo una consulta debe ser atendida por un profesional de la salud.</p>
+        </article>
+      </div>
+
+      <div class="buscador">
+        <h3>Consulta rápida de productos</h3>
+        <p>Escribe el nombre de un producto para solicitar información a la farmacia.</p>
+        <form class="buscador-form" id="form-busqueda">
+          <input id="producto" type="search" placeholder="Ejemplo: acetaminofén, vitaminas, protector solar" aria-label="Nombre del producto">
+          <button type="submit">Consultar</button>
+        </form>
+        <div class="resultado-busqueda" id="resultado-busqueda" aria-live="polite"></div>
+      </div>
+
+      <div class="alerta">
+        <strong>Importante:</strong> la información de esta página es orientativa y no sustituye una valoración médica ni una fórmula cuando sea necesaria.
+      </div>
+    </div>
+  </section>
+
   <section id="empresa">
     <div class="contenedor">
       <h2>Tipo empresarial</h2>
@@ -301,6 +422,24 @@
     caja.classList.add(abierto ? "abierto" : "cerrado");
     document.getElementById("estado-texto").textContent = abierto ? "Abierto ahora" : "Cerrado ahora";
   })();
+
+
+  // Consulta rápida de productos
+  document.getElementById("form-busqueda").addEventListener("submit", function (evento) {
+    evento.preventDefault();
+
+    var producto = document.getElementById("producto").value.trim();
+    var resultado = document.getElementById("resultado-busqueda");
+
+    if (!producto) {
+      resultado.textContent = "Escribe el nombre de un producto para realizar la consulta.";
+      return;
+    }
+
+    resultado.textContent =
+      "Consulta recibida para: " + producto +
+      ". Confirma disponibilidad y precio con Farmacia Vida Sana por WhatsApp.";
+  });
 </script>
 </body>
 </html>
