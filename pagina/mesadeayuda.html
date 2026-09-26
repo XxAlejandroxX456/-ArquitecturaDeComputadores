@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mesa de ayuda | Farmacia Vida Sana</title>
+<meta name="description" content="Mesa de ayuda de Farmacia Vida Sana.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--verde-oscuro:#0d4a40;--verde:#17836b;--menta:#e4f3ed;--blanco:#fff;--tinta:#16241f;--gris:#56645f;--linea:#cfe0d9;--coral:#e2573a;--titulos:"Bricolage Grotesque","Trebuchet MS",Arial,sans-serif;--texto:"Figtree","Segoe UI",Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0} html{scroll-behavior:smooth}
+body{font-family:var(--texto);color:var(--tinta);background:#f8fbfa;line-height:1.6;font-size:1.05rem}
+a{color:inherit}.contenedor{width:min(1080px,100% - 2.5rem);margin:auto}
+header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--linea)}
+.barra{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:.8rem 0}
+.marca{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--titulos);font-weight:800;font-size:1.25rem;color:var(--verde-oscuro)}
+.marca svg{width:34px;height:34px} nav ul{list-style:none;display:flex;gap:.3rem;flex-wrap:wrap}
+nav a{display:block;padding:.4rem .8rem;border-radius:6px;text-decoration:none;font-weight:500;color:var(--gris)}
+nav a:hover,nav a.activo{background:var(--menta);color:var(--verde-oscuro)}
+.hero{background:var(--verde-oscuro);color:#fff;padding:clamp(3rem,7vw,5rem) 0}
+.hero h1{font-family:var(--titulos);font-size:clamp(2.4rem,6vw,4rem);line-height:1.05;margin-bottom:1rem}
+.hero p{max-width:700px;color:#cfe7df;font-size:1.15rem}
+main{padding:3rem 0 5rem}.layout{display:grid;grid-template-columns:1.3fr .7fr;gap:2rem;align-items:start}
+.panel{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:1.7rem;box-shadow:0 8px 24px rgba(13,74,64,.06)}
+h2{font-family:var(--titulos);color:var(--verde-oscuro);font-size:1.8rem;margin-bottom:1.2rem}
+.formulario{display:grid;gap:1rem} label{display:block;font-weight:600;color:var(--verde-oscuro);margin-bottom:.35rem}
+input,select,textarea{width:100%;border:1px solid var(--linea);border-radius:8px;padding:.75rem .9rem;font:inherit;color:var(--tinta);background:#fff}
+textarea{min-height:140px;resize:vertical}
+input:focus,select:focus,textarea:focus{border-color:var(--verde);outline:2px solid var(--menta)}
+.boton{border:0;border-radius:8px;padding:.85rem 1.3rem;background:var(--verde-oscuro);color:#fff;font:inherit;font-weight:600;cursor:pointer}
+.boton:hover{background:var(--verde)}
+.respuesta{margin-top:1rem;padding:1rem;border-radius:8px;background:var(--menta);color:var(--verde-oscuro);display:none}
+.opciones{display:grid;gap:.8rem}.opcion{border:1px solid var(--linea);border-radius:10px;padding:1rem;background:#fbfdfc}
+.opcion h3{font-family:var(--titulos);color:var(--verde-oscuro);font-size:1.1rem;margin-bottom:.25rem}.opcion p{color:var(--gris);font-size:.95rem}
+.faq{margin-top:2rem} details{border-top:1px solid var(--linea);padding:1rem 0} details:last-child{border-bottom:1px solid var(--linea)}
+summary{cursor:pointer;font-weight:600;color:var(--verde-oscuro)} details p{color:var(--gris);margin-top:.6rem}
+.volver{display:inline-block;margin-top:1.5rem;color:var(--verde-oscuro);font-weight:600;text-decoration:none}.volver:hover{text-decoration:underline}
+footer{background:var(--verde-oscuro);color:#cfe7df;padding:1.6rem 0;font-size:.92rem} footer .contenedor{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.barra{justify-content:center}}
+</style>
+</head>
+<body>
+<header><div class="contenedor barra">
+<a class="marca" href="index.html" aria-label="Farmacia Vida Sana, ir al inicio">
+<svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#17836b"/><path d="M16 8h8v8h8v8h-8v8h-8v-8H8v-8h8z" fill="#fff"/></svg>
+Farmacia Vida Sana</a>
+<nav aria-label="Principal"><ul>
+<li><a href="index.html">Inicio</a></li>
+<li><a href="index.html#nosotros">Nosotros</a></li>
+<li><a href="index.html#servicios">Servicios</a></li>
+<li><a href="index.html#contacto">Contacto</a></li>
+<li><a class="activo" href="mesadeayuda.html">Mesa de ayuda</a></li>
+</ul></nav>
+</div></header>
+
+<section class="hero"><div class="contenedor">
+<h1>Mesa de ayuda</h1>
+<p>Un espacio para registrar consultas, solicitudes y dudas relacionadas con los productos y servicios de Farmacia Vida Sana.</p>
+</div></section>
+
+<main><div class="contenedor">
+<div class="layout">
+<section class="panel">
+<h2>Registrar una solicitud</h2>
+<form class="formulario" id="form-ayuda">
+<div><label for="nombre">Nombre</label><input type="text" id="nombre" placeholder="Escribe tu nombre" required></div>
+<div><label for="correo">Correo electrónico</label><input type="email" id="correo" placeholder="correo@ejemplo.com" required></div>
+<div><label for="tipo">Tipo de solicitud</label>
+<select id="tipo" required><option value="">Selecciona una opción</option><option value="producto">Consulta sobre un producto</option><option value="pedido">Consulta sobre un pedido</option><option value="domicilio">Consulta sobre domicilio</option><option value="servicio">Consulta sobre un servicio</option><option value="otro">Otra solicitud</option></select></div>
+<div><label for="mensaje">Descripción de la solicitud</label><textarea id="mensaje" placeholder="Describe brevemente tu consulta" required></textarea></div>
+<button class="boton" type="submit">Enviar solicitud</button>
+</form>
+<div class="respuesta" id="respuesta" aria-live="polite"></div>
+</section>
+
+<aside class="panel"><h2>¿En qué podemos ayudarte?</h2><div class="opciones">
+<div class="opcion"><h3>Productos</h3><p>Consulta disponibilidad, características y presentación de un producto.</p></div>
+<div class="opcion"><h3>Pedidos</h3><p>Solicita información sobre un pedido realizado en la farmacia.</p></div>
+<div class="opcion"><h3>Domicilios</h3><p>Consulta información relacionada con la entrega de productos.</p></div>
+<div class="opcion"><h3>Servicios</h3><p>Pregunta por los servicios disponibles y sus condiciones de atención.</p></div>
+</div></aside>
+</div>
+
+<section class="panel faq"><h2>Preguntas frecuentes</h2>
+<details><summary>¿Cómo puedo consultar si un medicamento está disponible?</summary><p>Registra una solicitud indicando el nombre del producto. La disponibilidad debe ser confirmada por la farmacia.</p></details>
+<details><summary>¿Puedo solicitar información sobre un domicilio?</summary><p>Sí. Selecciona la opción de domicilio y describe tu solicitud para recibir información sobre el servicio.</p></details>
+<details><summary>¿La mesa de ayuda reemplaza una consulta médica?</summary><p>No. Esta herramienta sirve para consultas relacionadas con la farmacia. Ante una situación médica, se debe acudir a un profesional de la salud.</p></details>
+<a class="volver" href="index.html">Volver a Farmacia Vida Sana</a>
+</section>
+</div></main>
+
+<footer><div class="contenedor">
+<span>© <span id="anio">2026</span> Farmacia Vida Sana. Todos los derechos reservados.</span>
+<span>Mesa de ayuda y atención al cliente.</span>
+</div></footer>
+
+<script>
+document.getElementById("anio").textContent = new Date().getFullYear();
+document.getElementById("form-ayuda").addEventListener("submit", function(evento) {
+  evento.preventDefault();
+  var nombre = document.getElementById("nombre").value.trim();
+  var tipo = document.getElementById("tipo").value;
+  var respuesta = document.getElementById("respuesta");
+  var tipos = {producto:"consulta sobre un producto",pedido:"consulta sobre un pedido",domicilio:"consulta sobre un domicilio",servicio:"consulta sobre un servicio",otro:"otra solicitud"};
+  respuesta.style.display = "block";
+  respuesta.textContent = "Solicitud registrada para " + nombre + ". Tipo de solicitud: " + tipos[tipo] + ". Para una respuesta real, conecta este formulario con el medio de contacto de la farmacia.";
+});
+</script>
+</body>
+</html>
